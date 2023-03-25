@@ -1,0 +1,9 @@
+{
+	"short_name": "A or B game",
+	"name": "A or B game",
+	"icons": [],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}
