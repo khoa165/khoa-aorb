@@ -6,7 +6,7 @@ const Card = ({
 	currentQ,
 	questions,
 	setQuestion,
-	score: { skhoa, snguyen, sha },
+	score: { skhoa, snguyen, sha, sta },
 	setScore,
 	answers,
 	setAnswers,
@@ -14,7 +14,7 @@ const Card = ({
 	const toastId = useRef(null);
 
 	useEffect(() => {
-		if (currentQ >= 1 && currentQ <= 12) {
+		if (currentQ >= 1 && currentQ <= 20) {
 			toastId.current = toast.error(`Time running for question ${currentQ}...`);
 			const timer = setTimeout(() => {
 				updateAnswers('');
@@ -27,13 +27,14 @@ const Card = ({
 	if (currentQ < 1) {
 		return null;
 	}
-	const { q, a, b, khoa, nguyen, ha } = questions[currentQ - 1];
+	const { q, d, a, b, khoa, nguyen, ha, ta } = questions[currentQ - 1];
 
 	const calculateScore = (choice) =>
 		setScore({
 			skhoa: khoa === choice ? skhoa + 1 : skhoa,
 			snguyen: nguyen === choice ? snguyen + 1 : snguyen,
 			sha: ha === choice ? sha + 1 : sha,
+			sta: ta === choice ? sta + 1 : sta,
 		});
 
 	const updateAnswers = (choice) => {
@@ -60,7 +61,7 @@ const Card = ({
 	return (
 		<div className='game-card'>
 			<h1 className='text-success'>
-				{q}. {a} hay {b}?
+				{q}. {d ? d : `${a} or ${b}?`}
 			</h1>
 			<div className='d-flex justify-content-evenly py-5'>
 				<Button className='ab-button' color='success' outline onClick={pickA}>

@@ -6,7 +6,7 @@ const Rule = () => {
 			<h1 className='text-success'>Instructions:</h1>
 			<div className='rule'>
 				<p>
-					There are 12 questions in total and you only have{' '}
+					There are 20 questions in total and you only have{' '}
 					<span className='fw-bold fst-italic text-warning'>5 seconds</span> for
 					each question
 				</p>

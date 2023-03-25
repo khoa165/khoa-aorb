@@ -7,6 +7,7 @@ const Game = ({ setGameData, questions }) => {
 		skhoa: 0,
 		snguyen: 0,
 		sha: 0,
+		sta: 0,
 	});
 	const [answers, setAnswers] = useState([]);
 	useEffect(() => {
@@ -14,7 +15,7 @@ const Game = ({ setGameData, questions }) => {
 	}, []);
 
 	useEffect(() => {
-		if (q <= 12) {
+		if (q <= 20) {
 			return;
 		}
 		setGameData({
@@ -24,7 +25,7 @@ const Game = ({ setGameData, questions }) => {
 	}, [q]);
 	return (
 		<div>
-			{q <= 12 && (
+			{q <= 20 && (
 				<Card
 					currentQ={q}
 					questions={questions}

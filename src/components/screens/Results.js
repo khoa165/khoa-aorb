@@ -6,12 +6,14 @@ const Results = ({ gameData: { score, answers }, questions }) => {
 	const [match, setMatch] = useState(null);
 
 	useEffect(() => {
-		if (score.skhoa > score.snguyen && score.sha) {
+		if (score.skhoa >= Math.max(score.snguyen, score.sha, score.sta)) {
 			setMatch('khoa');
-		} else if (score.snguyen > score.skhoa && score.sha) {
+		} else if (score.snguyen >= Math.max(score.skhoa, score.sha, score.sta)) {
 			setMatch('nguyen');
-		} else if (score.sha > score.snguyen && score.skhoa) {
+		} else if (score.sha >= Math.max(score.snguyen, score.skhoa, score.sta)) {
 			setMatch('ha');
+		} else if (score.sta >= Math.max(score.snguyen, score.sha, score.skhoa)) {
+			setMatch('ta');
 		}
 	}, []);
 
@@ -28,10 +30,13 @@ const Results = ({ gameData: { score, answers }, questions }) => {
 		if (match === 'ha') {
 			return 'Huy Anh';
 		}
+		if (match === 'ta') {
+			return 'Thu Anh';
+		}
 	};
 
 	const getPercentScore = () => {
-		return parseFloat((score['s' + match] / 12) * 100).toFixed(2);
+		return parseFloat((score['s' + match] / 20) * 100).toFixed(2);
 	};
 
 	return (
