@@ -3,7 +3,7 @@ import React from 'react';
 const Rule = () => {
 	return (
 		<div className='rule-wrapper'>
-			<h1 className='text-success'>Instructions:</h1>
+			<h1 className='text-success'>Instructions</h1>
 			<div className='rule'>
 				<p>
 					There are 20 questions in total and you only have{' '}
