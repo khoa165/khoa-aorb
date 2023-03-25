@@ -12,7 +12,7 @@ const Auth = ({ startNextAction, modal, toggle }) => {
 	const [enteredPasscode, setEnteredPasscode] = useState('');
 	const onChange = (e) => setEnteredPasscode(e.target.value);
 	const verify = () => {
-		if (enteredPasscode === 'abc') {
+		if (enteredPasscode === 'viettech-khoa165') {
 			startNextAction();
 		} else {
 			alert('Wrong passcode! Ask Khoa for it!');
