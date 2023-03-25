@@ -123,7 +123,7 @@ export const questions = [
 		q: 13,
 		d: 'Time complexity of searching in a sorted linked list',
 		a: 'O(n)',
-		b: 'O(nlogn)',
+		b: 'O(logn)',
 		khoa: 'a',
 		nguyen: 'a',
 		ha: 'a',

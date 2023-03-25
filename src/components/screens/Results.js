@@ -52,7 +52,7 @@ const Results = ({ gameData: { score, answers }, questions }) => {
 					</div>
 				)}
 				{showResult && (
-					<div className='results-wrapper px-3'>
+					<div className='results-wrapper'>
 						<h4 className='text-success mb-5'>
 							Your best mentor match is with {getMatch()} for a score of{' '}
 							{getPercentScore()}%
