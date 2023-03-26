@@ -6,14 +6,14 @@ const Results = ({ gameData: { score, answers }, questions }) => {
 	const [match, setMatch] = useState(null);
 
 	useEffect(() => {
-		if (score.skhoa >= Math.max(score.snguyen, score.sha, score.sta)) {
-			setMatch('khoa');
-		} else if (score.snguyen >= Math.max(score.skhoa, score.sha, score.sta)) {
-			setMatch('nguyen');
-		} else if (score.sha >= Math.max(score.snguyen, score.skhoa, score.sta)) {
+		if (score.sha >= Math.max(score.snguyen, score.skhoa, score.sta)) {
 			setMatch('ha');
 		} else if (score.sta >= Math.max(score.snguyen, score.sha, score.skhoa)) {
 			setMatch('ta');
+		} else if (score.snguyen >= Math.max(score.skhoa, score.sha, score.sta)) {
+			setMatch('nguyen');
+		} else if (score.skhoa >= Math.max(score.snguyen, score.sha, score.sta)) {
+			setMatch('khoa');
 		}
 	}, []);
 
