@@ -36,7 +36,7 @@ const Results = ({ gameData: { score, answers }, questions }) => {
 	};
 
 	const getPercentScore = () => {
-		return parseFloat((score['s' + match] / 18) * 100).toFixed(2);
+		return parseFloat((score['s' + match] / 17) * 100).toFixed(2);
 	};
 
 	return (
