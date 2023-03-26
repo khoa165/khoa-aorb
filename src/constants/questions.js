@@ -53,6 +53,7 @@ export const questions = [
 	},
 	{
 		q: 6,
+		d: 'Childhood drink?',
 		a: 'Milo',
 		b: 'Ovaltine',
 		khoa: 'a',
@@ -180,7 +181,6 @@ export const questions = [
 		ta: 'b',
 	},
 	{
-		// TODO
 		q: 19,
 		d: 'Which one are you more struggling with?',
 		a: 'Getting an interview',
@@ -192,9 +192,9 @@ export const questions = [
 	},
 	{
 		q: 20,
-		d: 'Did you freak out in the beginning when we told you to take the assessment?',
-		a: 'Yes',
-		b: 'No',
+		d: 'Did you have fun/feel less stressed?',
+		a: 'No',
+		b: 'Yes',
 		khoa: 'b',
 		nguyen: 'b',
 		ha: 'b',
