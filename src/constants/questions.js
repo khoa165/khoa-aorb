@@ -1,10 +1,9 @@
 export const questions = [
 	{
-		// TODO
 		q: 1,
 		d: '1 + 1 = ?',
-		a: '11',
-		b: '10',
+		a: '2',
+		b: '11',
 		khoa: 'b',
 		nguyen: 'a',
 		ha: 'b',
@@ -21,7 +20,6 @@ export const questions = [
 		ta: 'a',
 	},
 	{
-		// TODO
 		q: 3,
 		d: 'Are you an introvert or extrovert person?',
 		a: 'Introvert',
@@ -46,14 +44,15 @@ export const questions = [
 		d: 'Which data structure is used for breadth-first search?',
 		a: 'Queue',
 		b: 'Stack',
-		khoa: 'a',
-		nguyen: 'a',
-		ha: 'a',
-		ta: 'a',
+		c: 'N/A',
+		khoa: 'c',
+		nguyen: 'c',
+		ha: 'c',
+		ta: 'c',
 	},
 	{
 		q: 6,
-		d: 'Childhood drink?',
+		d: 'Favorite drink when you were a kid?',
 		a: 'Milo',
 		b: 'Ovaltine',
 		khoa: 'a',
@@ -62,7 +61,6 @@ export const questions = [
 		ta: 'a',
 	},
 	{
-		// TODO
 		q: 7,
 		a: 'Listener',
 		b: 'Contributor',
@@ -90,7 +88,6 @@ export const questions = [
 		ta: 'b',
 	},
 	{
-		// TODO
 		q: 10,
 		d: 'Which do you like better?',
 		a: 'Group project',
@@ -142,16 +139,27 @@ export const questions = [
 	},
 	{
 		q: 15,
-		a: 'Coca-cola',
-		b: 'Pepsi',
-		khoa: 'a',
-		nguyen: 'a',
-		ha: 'a',
-		ta: 'b',
+		d: 'Which area do you want to learn more?',
+		a: 'Frontend',
+		b: 'Backend',
+		c: 'N/A',
+		khoa: 'c',
+		nguyen: 'c',
+		ha: 'c',
+		ta: 'c',
 	},
 	{
-		// TODO
 		q: 16,
+		d: 'Đồ ăn vặt tuổi thơ',
+		a: 'Bánh tráng trộn',
+		b: 'Phá lấu',
+		khoa: 'b',
+		nguyen: 'b',
+		ha: 'b',
+		ta: 'a',
+	},
+	{
+		q: 17,
 		d: 'Which are you better at?',
 		a: 'Technical interview',
 		b: 'Behavioral interview',
@@ -159,16 +167,6 @@ export const questions = [
 		nguyen: 'a',
 		ha: 'b',
 		ta: 'b',
-	},
-	{
-		// TODO
-		q: 17,
-		a: 'Bánh tráng trộn',
-		b: 'Phá lấu',
-		khoa: 'b',
-		nguyen: 'b',
-		ha: 'b',
-		ta: 'a',
 	},
 	{
 		q: 18,
@@ -192,7 +190,7 @@ export const questions = [
 	},
 	{
 		q: 20,
-		d: 'Did you have fun/feel less stressed?',
+		d: 'Hope this icebreaker eased your stress about the interview. Did you have fun?',
 		a: 'No',
 		b: 'Yes',
 		khoa: 'b',
