@@ -3,12 +3,6 @@ import Card from './Card';
 
 const Game = ({ setGameData, questions }) => {
 	const [q, setQuestion] = useState(0);
-	const [score, setScore] = useState({
-		skhoa: 0,
-		snguyen: 0,
-		sha: 0,
-		sta: 0,
-	});
 	const [answers, setAnswers] = useState([]);
 	useEffect(() => {
 		setQuestion(q + 1);
@@ -19,7 +13,6 @@ const Game = ({ setGameData, questions }) => {
 			return;
 		}
 		setGameData({
-			score,
 			answers,
 		});
 	}, [q]);
@@ -30,8 +23,6 @@ const Game = ({ setGameData, questions }) => {
 					currentQ={q}
 					questions={questions}
 					setQuestion={setQuestion}
-					score={score}
-					setScore={setScore}
 					answers={answers}
 					setAnswers={setAnswers}
 				/>
