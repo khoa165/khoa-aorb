@@ -1,57 +1,68 @@
 import React, { useEffect, useRef } from 'react';
-import { Button } from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
 import { toast } from 'react-toastify';
 
 const Card = ({ currentQ, questions, setQuestion, answers, setAnswers }) => {
 	const toastId = useRef(null);
+	const { qId, prompt, linear, menteeOnly, timer, ...options } =
+		questions[currentQ];
 
 	useEffect(() => {
-		if (currentQ >= 1 && currentQ <= 20) {
+		if (currentQ >= 0 && currentQ <= 14) {
 			toastId.current = toast.error(`Time running for question ${currentQ}...`);
-			const timer = setTimeout(() => {
+			const jsTimer = setTimeout(() => {
 				updateAnswers('');
 				goToNextQuestion();
-			}, 5000);
-			return () => clearTimeout(timer);
+			}, 10000);
+			return () => clearTimeout(jsTimer);
 		}
 	}, [currentQ]);
 
-	if (currentQ < 1) {
+	if (currentQ < 0) {
 		return null;
 	}
-	const { prompt, linear, menteeOnly, timer, options } =
-		questions[currentQ - 1];
 
 	const updateAnswers = (choice) => {
-		setAnswers([...answers, choice]);
+		setAnswers([
+			...answers,
+			{
+				qid: qId,
+				choice,
+			},
+		]);
 	};
 
 	const goToNextQuestion = () => {
 		toast.dismiss(toastId.current);
-		setQuestion(q + 1);
+		setQuestion(currentQ + 1);
+	};
+
+	const pickChoice = (choice) => {
+		updateAnswers(choice);
+		goToNextQuestion();
 	};
 
 	return (
 		<div className='game-card'>
 			<h1 className='text-success'>{prompt}</h1>
-			<div className='d-flex justify-content-evenly py-5'>
-				<Button
-					className='ab-button'
-					color='success'
-					outline
-					onClick={() => {}}
-				>
-					{options.a}
-				</Button>
-				<Button
-					className='ab-button'
-					color='success'
-					outline
-					onClick={() => {}}
-				>
-					{options.b}
-				</Button>
-			</div>
+			<Row>
+				{['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'].map((c) => {
+					if (options[c] !== undefined) {
+						return (
+							<Col lg='4'>
+								<Button
+									className='ab-button'
+									color='success'
+									outline
+									onClick={() => pickChoice(c)}
+								>
+									{options[c]}
+								</Button>
+							</Col>
+						);
+					}
+				})}
+			</Row>
 		</div>
 	);
 };

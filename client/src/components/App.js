@@ -10,17 +10,40 @@ import { ToastContainer } from 'react-toastify';
 const App = () => {
 	const [gameData, setGameData] = useState(null);
 	const [gameStarted, setGameStarted] = useState(false);
+	const [name, setName] = useState(false);
+	const [passcode, setPasscode] = useState(false);
+	const [isMentor, setIsMentor] = useState(false);
 	const startNextAction = () => setGameStarted(true);
 
 	if (gameData !== null) {
-		return <Results gameData={gameData} questions={questions} />;
+		return (
+			<Results
+				gameData={gameData}
+				name={name}
+				passcode={passcode}
+				questions={questions}
+			/>
+		);
 	}
 
 	if (gameStarted) {
-		return <Game setGameData={setGameData} questions={questions} />;
+		return (
+			<Game
+				setGameData={setGameData}
+				questions={questions}
+				isMentor={isMentor}
+			/>
+		);
 	}
 
-	return <Landing startNextAction={startNextAction} />;
+	return (
+		<Landing
+			startNextAction={startNextAction}
+			setName={setName}
+			setPasscode={setPasscode}
+			setIsMentor={setIsMentor}
+		/>
+	);
 };
 
 const AppWrapper = () => {
@@ -28,7 +51,7 @@ const AppWrapper = () => {
 		<Container>
 			<ToastContainer
 				position='top-right'
-				autoClose='4500'
+				autoClose='9900'
 				draggable={false}
 				pauseOnHover={false}
 				pauseOnFocusLoss={false}

@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
-const Game = ({ setGameData, questions }) => {
+const Game = ({ setGameData, questions, isMentor }) => {
 	const [q, setQuestion] = useState(0);
 	const [answers, setAnswers] = useState([]);
-	useEffect(() => {
-		setQuestion(q + 1);
-	}, []);
 
 	useEffect(() => {
-		if (q <= 20) {
+		if (q < questions.length) {
 			return;
 		}
-		setGameData({
-			answers,
-		});
+		console.log('answers', answers);
+		setGameData(answers.filter((a) => a.qid !== null && a.qid !== undefined));
 	}, [q]);
 	return (
 		<div>
-			{q <= 20 && (
+			{q < questions.length && (
 				<Card
 					currentQ={q}
 					questions={questions}
 					setQuestion={setQuestion}
 					answers={answers}
 					setAnswers={setAnswers}
+					isMentor={isMentor}
 				/>
 			)}
 		</div>

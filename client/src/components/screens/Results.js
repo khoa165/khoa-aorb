@@ -1,86 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Button } from 'reactstrap';
 
-const Results = ({ gameData: { score, answers }, questions }) => {
-	const [showResult, setShowResult] = useState(false);
+const Results = ({ name, passcode, gameData }) => {
 	const [match, setMatch] = useState(null);
+	const [score, setScore] = useState(null);
 
-	useEffect(() => {
-		if (score.sha >= Math.max(score.snguyen, score.skhoa, score.sta)) {
-			setMatch('ha');
-		} else if (score.sta >= Math.max(score.snguyen, score.sha, score.skhoa)) {
-			setMatch('ta');
-		} else if (score.snguyen >= Math.max(score.skhoa, score.sha, score.sta)) {
-			setMatch('nguyen');
-		} else if (score.skhoa >= Math.max(score.snguyen, score.sha, score.sta)) {
-			setMatch('khoa');
-		}
-	}, []);
-
-	const getMatch = () => {
-		if (match === null) {
-			return '';
-		}
-		if (match === 'khoa') {
-			return 'Khoa Le';
-		}
-		if (match === 'nguyen') {
-			return 'Nguyen Vu';
-		}
-		if (match === 'ha') {
-			return 'Huy Anh';
-		}
-		if (match === 'ta') {
-			return 'Thu Anh';
+	const submit = async () => {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+		const body = JSON.stringify({
+			name,
+			passcode,
+			responses: gameData,
+		});
+		let res = null;
+		try {
+			res = await axios.post('http://localhost:8000/submit', body, config);
+			if (res.data.saved) {
+				if (res.data.mentor) {
+					alert('You are a mentor, no match for you!');
+				} else {
+					setMatch(res.data.match);
+					setScore(res.data.count);
+				}
+			} else {
+				alert('Something went wrong');
+			}
+		} catch (error) {
+			console.log(error?.response?.data?.saved);
+			if (
+				error?.response?.data?.saved !== null &&
+				error?.response?.data?.saved !== undefined
+			) {
+				alert(`Saved: ${error?.response?.data?.saved}`);
+			}
 		}
 	};
 
 	const getPercentScore = () => {
-		return parseFloat((score['s' + match] / 17) * 100).toFixed(2);
+		return parseFloat((score / 13) * 100).toFixed(2);
 	};
 
 	return (
-		match !== null && (
-			<div id='results-screen'>
-				{!showResult && (
-					<div>
-						<h1 className='text-success'>Congrats on completing the quiz</h1>
-						<h5>
-							<Button onClick={() => setShowResult(true)}>FIND OUT</Button> your
-							compatible match, shall we?
-						</h5>
-					</div>
-				)}
-				{showResult && (
-					<div className='results-wrapper'>
-						<h4 className='text-success mb-5'>
-							Your best mentor match is with {getMatch()} for a score of{' '}
-							{getPercentScore()}%
-						</h4>
-						<div className='results'>
-							<div className='result-box'>
-								{answers.map((answer, index) => {
-									const question = questions[index];
-									return (
-										<p key={index}>
-											{index + 1}. {answer !== '' && questions[index][answer]}
-											{answer === question[match] && <span> &#9989;</span>}
-										</p>
-									);
-								})}
-							</div>
-							<div className='result-box'>
-								{questions.map((question) => (
-									<p key={question.q}>
-										{question.q}. {question[question[match]]}
-									</p>
-								))}
-							</div>
-						</div>
-					</div>
-				)}
-			</div>
-		)
+		<div id='results-screen'>
+			{match === null && (
+				<div>
+					<h1 className='text-success'>Congrats on completing the quiz</h1>
+					<h5>
+						<Button onClick={() => submit()}>FIND OUT</Button> your compatible
+						match, shall we?
+					</h5>
+				</div>
+			)}
+			{match !== null && (
+				<div className='results-wrapper'>
+					<h4 className='text-success mb-5'>
+						Your best mentor match is with {match} for a compatibility of{' '}
+						{getPercentScore()}%
+					</h4>
+				</div>
+			)}
+		</div>
 	);
 };
 

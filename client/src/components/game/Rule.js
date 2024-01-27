@@ -6,11 +6,11 @@ const Rule = () => {
 			<h1 className='text-success'>Instructions</h1>
 			<div className='rule'>
 				<p>
-					There are 20 questions in total and you only have{' '}
-					<span className='fw-bold fst-italic text-warning'>5 seconds</span> for
-					each question
+					There are 15 questions in total and you only have{' '}
+					<span className='fw-bold fst-italic text-warning'>10 seconds</span>{' '}
+					for each question (pay attention to the timer, don't let it run out)
 				</p>
-				<p>Don't over think, just pick whatever is more associated with you</p>
+				<p>Don't over think, just pick what you feel the most</p>
 				<p>
 					Do not miss a question, always pick something before time runs out!
 				</p>

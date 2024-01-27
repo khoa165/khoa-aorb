@@ -3,10 +3,10 @@ export const questions = [
 		prompt: "Sample question: confirm you understand what's going on",
 		a: 'Yup, I know I am on a timer',
 		b: 'No, I am not sure what to do still',
-		timer: 60,
 		menteeOnly: true,
 	},
 	{
+		qId: 1,
 		prompt: 'Are you...?',
 		a: 'Introvert',
 		b: 'Kinda in the middle',
@@ -14,6 +14,7 @@ export const questions = [
 		linear: true,
 	},
 	{
+		qId: 2,
 		prompt: 'Do you like board games (poker, catan, spyfall, codenames, etc)?',
 		a: 'Yes, I would love to play with other mentors/mentees',
 		b: 'Maybe, probaby once in a while',
@@ -21,6 +22,7 @@ export const questions = [
 		linear: true,
 	},
 	{
+		qId: 3,
 		prompt: 'Bạn có tin vào tâm linh?',
 		a: 'Có',
 		b: 'Hơi hơi',
@@ -28,6 +30,7 @@ export const questions = [
 		linear: true,
 	},
 	{
+		qId: 4,
 		prompt: 'Which Harry Potter house do you reasonate with the most?',
 		a: 'Gryffindor',
 		b: 'Slytherin',
@@ -36,6 +39,7 @@ export const questions = [
 		e: "I haven't watched or read Harry Potter",
 	},
 	{
+		qId: 5,
 		prompt: 'Which social media do you use the most?',
 		a: 'Facebook',
 		b: 'Instagram',
@@ -44,6 +48,7 @@ export const questions = [
 		e: 'Thread',
 	},
 	{
+		qId: 6,
 		prompt: "What's one thing you wish you had more of",
 		a: 'Money',
 		b: 'Fame',
@@ -52,6 +57,7 @@ export const questions = [
 		e: 'Something else',
 	},
 	{
+		qId: 7,
 		prompt: 'Are you...?',
 		a: 'Dog person',
 		b: 'Cat person',
@@ -59,11 +65,13 @@ export const questions = [
 		d: 'Alien',
 	},
 	{
+		qId: 8,
 		prompt: 'Which one are you more struggling with?',
 		a: 'Getting an interview',
 		b: 'Passing an interview',
 	},
 	{
+		qId: 9,
 		prompt: 'Bạn có hay hóng hớt drama không?',
 		a: 'Tôi thường là người share drama/tea trong nhóm bạn của mình',
 		b: 'Tôi thường là người hóng hớt drama từ bạn mình',
@@ -73,6 +81,7 @@ export const questions = [
 		linear: true,
 	},
 	{
+		qId: 10,
 		prompt: 'Bạn thích mùa nào nhất?',
 		a: 'Xuân',
 		b: 'Hạ',
@@ -80,6 +89,7 @@ export const questions = [
 		d: 'Đông',
 	},
 	{
+		qId: 11,
 		prompt: 'Which show/series from below do you like the most?',
 		a: 'Fellow Travellers',
 		b: 'The Handmaiden',
@@ -93,6 +103,7 @@ export const questions = [
 		j: "I haven't watched any of them",
 	},
 	{
+		qId: 12,
 		prompt: 'What is your favorite project from the first cohort?',
 		a: 'Bunny Lover - financial',
 		b: 'Safe Travel - travel',
@@ -100,6 +111,7 @@ export const questions = [
 		d: "I haven't had a chance to watch the recording",
 	},
 	{
+		qId: 13,
 		prompt: 'Favorite sitcom',
 		a: 'Friends',
 		b: 'How I met your mother',
