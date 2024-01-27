@@ -1,8 +1,46 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { mapping } = require('./mapping');
 require('dotenv').config();
+
+const mapping = {
+	125: 'Anh Tran',
+	208: 'Thao Duong',
+	82: 'Thieu Nguyen',
+	83: 'Thien Nguyen',
+	168: 'Quy Nguyen',
+	194: 'An Ngo',
+	206: 'Tri Hoang',
+	30: 'Khang Nguyen',
+	49: 'Thinh Tran',
+	54: 'Minh Dinh',
+	62: 'Long Do',
+	69: 'Nguyen Tran',
+	70: 'Quan Phan',
+	74: 'Quan Nguyen',
+	76: 'Ha Nguyen',
+	80: 'Chau Ta',
+	81: 'Bach Nguyen',
+	85: 'Hoang Tran',
+	88: 'Anh Hoang',
+	100: 'Linh Hoang',
+	102: 'Linh Nguyen',
+	112: 'Tu Pham',
+	114: 'Anh Nguyen',
+	121: 'Linh Tran',
+	129: 'Ha Nguyen',
+	137: 'Nhat Nguyen',
+	138: 'Duy Tran',
+	142: 'Ha Nguyen',
+	149: 'Trinh Nguyen',
+	154: 'Hung Ngo',
+	155: 'Van Nguyen',
+	169: 'Khang Nguyen',
+	183: 'Chi',
+	186: 'Ngoc Nguyen',
+	190: 'Vy Tran',
+	196: 'Rachel Tran',
+};
 
 const app = express();
 
@@ -78,6 +116,7 @@ const verifyAccess = (name, passcode) => {
 
 // Verify access
 app.post('/verify', async (req, res) => {
+	console.log(req.body);
 	const name = req.body.name;
 	const passcode = req.body.passcode;
 	if (verifyAccess(name, passcode)) {

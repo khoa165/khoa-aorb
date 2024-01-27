@@ -32,12 +32,11 @@ const Auth = ({
 			passcode: enteredPasscode,
 		});
 		let res = null;
+		const local = 'http://localhost:8000';
+		const online = 'https://mentorship-game.onrender.com';
+		const url = local;
 		try {
-			res = await axios.post(
-				'https://mentorship-game.onrender.com/verify',
-				body,
-				config
-			);
+			res = await axios.post(url + '/verify', body, config);
 			if (res.data.verified) {
 				setName(enteredName);
 				setPasscode(enteredPasscode);

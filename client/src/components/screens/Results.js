@@ -18,12 +18,11 @@ const Results = ({ name, passcode, gameData }) => {
 			responses: gameData,
 		});
 		let res = null;
+		const local = 'http://localhost:8000';
+		const online = 'https://mentorship-game.onrender.com';
+		const url = local;
 		try {
-			res = await axios.post(
-				'https://mentorship-game.onrender.com/submit',
-				body,
-				config
-			);
+			res = await axios.post(url + '/submit', body, config);
 			if (res.data.saved) {
 				if (res.data.mentor) {
 					alert('You are a mentor, no match for you!');
