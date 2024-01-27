@@ -20,7 +20,7 @@ const Results = ({ name, passcode, gameData }) => {
 		let res = null;
 		const local = 'http://localhost:8000';
 		const online = 'https://mentorship-game.onrender.com';
-		const url = local;
+		const url = online;
 		try {
 			res = await axios.post(url + '/submit', body, config);
 			if (res.data.saved) {
