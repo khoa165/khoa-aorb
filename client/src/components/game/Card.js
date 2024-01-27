@@ -8,7 +8,7 @@ const Card = ({ currentQ, questions, setQuestion, answers, setAnswers }) => {
 		questions[currentQ];
 
 	useEffect(() => {
-		if (currentQ >= 0 && currentQ <= 14) {
+		if (currentQ >= 0 && currentQ < questions.length) {
 			toastId.current = toast.error(`Time running for question ${currentQ}...`);
 			const jsTimer = setTimeout(() => {
 				updateAnswers('');
