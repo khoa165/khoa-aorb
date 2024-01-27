@@ -61,7 +61,7 @@ const verifyAccess = (name, passcode) => {
 		return false;
 	}
 	const eligible =
-		parts[0] !== 'vtmp2024applicant' || parts[0] !== 'season2mentors';
+		parts[0] === 'vtmp2024applicant' || parts[0] === 'season2mentors';
 	if (!eligible) {
 		return false;
 	}
@@ -70,9 +70,6 @@ const verifyAccess = (name, passcode) => {
 	}
 	try {
 		const aid = parseInt(parts[1], 10);
-		if (mapping[aid] !== name) {
-			return false;
-		}
 		return mapping[aid] === name;
 	} catch (error) {
 		return false;
