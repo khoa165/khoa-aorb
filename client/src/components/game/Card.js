@@ -13,7 +13,7 @@ const Card = ({ currentQ, questions, setQuestion, answers, setAnswers }) => {
 			const jsTimer = setTimeout(() => {
 				updateAnswers('');
 				goToNextQuestion();
-			}, 15000);
+			}, 20000);
 			return () => clearTimeout(jsTimer);
 		}
 	}, [currentQ]);

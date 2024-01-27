@@ -7,7 +7,7 @@ const Rule = () => {
 			<div className='rule'>
 				<p>
 					There are 15 questions in total and you have{' '}
-					<span className='fw-bold fst-italic text-warning'>15 seconds</span>{' '}
+					<span className='fw-bold fst-italic text-warning'>20 seconds</span>{' '}
 					for each question (pay attention to the timer, don't let it run out)
 				</p>
 				<p>Don't over think, just pick what you feel the most</p>

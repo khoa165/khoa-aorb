@@ -51,7 +51,7 @@ const AppWrapper = () => {
 		<Container>
 			<ToastContainer
 				position='top-right'
-				autoClose='14900'
+				autoClose='19900'
 				draggable={false}
 				pauseOnHover={false}
 				pauseOnFocusLoss={false}
