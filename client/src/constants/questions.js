@@ -16,7 +16,7 @@ export const questions = [
 	{
 		qId: 2,
 		prompt: 'Do you like board games (poker, catan, spyfall, codenames, etc)?',
-		a: 'Yes, I would love to play with other mentors/mentees',
+		a: 'Yes, I would love to play',
 		b: 'Maybe, probaby once in a while',
 		c: 'Nah, I prefer other activities',
 		linear: true,
