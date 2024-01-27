@@ -33,7 +33,11 @@ const Auth = ({
 		});
 		let res = null;
 		try {
-			res = await axios.post('http://localhost:8000/verify', body, config);
+			res = await axios.post(
+				'https://mentorship-game.onrender.com/verify',
+				body,
+				config
+			);
 			if (res.data.verified) {
 				setName(enteredName);
 				setPasscode(enteredPasscode);

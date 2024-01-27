@@ -19,7 +19,11 @@ const Results = ({ name, passcode, gameData }) => {
 		});
 		let res = null;
 		try {
-			res = await axios.post('http://localhost:8000/submit', body, config);
+			res = await axios.post(
+				'https://mentorship-game.onrender.com/submit',
+				body,
+				config
+			);
 			if (res.data.saved) {
 				if (res.data.mentor) {
 					alert('You are a mentor, no match for you!');
