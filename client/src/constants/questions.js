@@ -99,7 +99,7 @@ export const questions = [
 		f: 'Red White & Royal Blue',
 		g: 'Carol',
 		h: 'Drag Race',
-		i: "I haven't watched any of them",
+		i: "I don't like any/haven't watched any of them",
 	},
 	{
 		qId: 12,
