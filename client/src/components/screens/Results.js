@@ -5,6 +5,7 @@ import { Button } from 'reactstrap';
 const Results = ({ name, passcode, gameData }) => {
 	const [match, setMatch] = useState(null);
 	const [score, setScore] = useState(null);
+	const [done, setDone] = useState(false);
 
 	const submit = async () => {
 		const config = {
@@ -42,6 +43,7 @@ const Results = ({ name, passcode, gameData }) => {
 				alert(`Saved: ${error?.response?.data?.saved}`);
 			}
 		}
+		setDone(true);
 	};
 
 	const getPercentScore = () => {
@@ -53,10 +55,12 @@ const Results = ({ name, passcode, gameData }) => {
 			{match === null && (
 				<div>
 					<h1 className='text-success'>Congrats on completing the quiz</h1>
-					<h5>
-						<Button onClick={() => submit()}>FIND OUT</Button> your compatible
-						match, shall we?
-					</h5>
+					{!done && (
+						<h5>
+							<Button onClick={() => submit()}>FIND OUT</Button> your compatible
+							match, shall we?
+						</h5>
+					)}
 				</div>
 			)}
 			{match !== null && (
