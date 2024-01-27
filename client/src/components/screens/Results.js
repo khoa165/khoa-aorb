@@ -19,9 +19,9 @@ const Results = ({ name, passcode, gameData }) => {
 			responses: gameData,
 		});
 		let res = null;
-		const local = 'http://localhost:8000';
-		const online = 'https://mentorship-game.onrender.com';
-		const url = online;
+		const url =
+			process.env.REACT_APP_BACKEND_URL ||
+			'https://mentorship-game.onrender.com';
 		try {
 			res = await axios.post(url + '/submit', body, config);
 			if (res.data.saved) {
