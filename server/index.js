@@ -64,7 +64,7 @@ const userSchema = new mongoose.Schema({
 	},
 	responses: [responseSchema],
 });
-
+userSchema.set('timestamps', true);
 const User = mongoose.model('User', userSchema);
 
 // Connect to MongoDB
