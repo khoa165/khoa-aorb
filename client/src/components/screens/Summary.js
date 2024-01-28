@@ -85,8 +85,9 @@ const Summary = () => {
 						<Col lg='4'>
 							<h3>{friendMatch.name}</h3>
 							<p>
-								Most compatible with {friendMatch.match} with a score of{' '}
-								{parseFloat((friendMatch.count / 20) * 100).toFixed(0)}%
+								Most compatible with {friendMatch.matches.join(', ')} with a
+								score of {parseFloat((friendMatch.count / 20) * 100).toFixed(0)}
+								%
 							</p>
 						</Col>
 					))}

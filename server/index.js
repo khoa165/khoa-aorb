@@ -131,7 +131,6 @@ app.post('/submit', async (req, res) => {
 	if (!verifyAccess(name, passcode)) {
 		return res.status(400).json({ saved: false });
 	}
-	console.log(name, passcode, responses);
 
 	try {
 		const newUser = new User({
@@ -161,7 +160,7 @@ app.post('/submit', async (req, res) => {
 
 async function findBestMatchingMentor(participantResponses, exclude) {
 	const mentors = await User.find({ role: 'mentor' });
-	let bestMatch = { mentor: null, matchingResponses: 0 };
+	let bestMatch = { mentor: null, matchingResponses: 0, mentors: [] };
 
 	for (const mentor of mentors) {
 		if (exclude === mentor.name) {
@@ -179,7 +178,16 @@ async function findBestMatchingMentor(participantResponses, exclude) {
 		}
 
 		if (matchCount > bestMatch.matchingResponses) {
-			bestMatch = { mentor: mentor.name, matchingResponses: matchCount };
+			bestMatch = {
+				mentor: mentor.name,
+				matchingResponses: matchCount,
+				mentors: [mentor.name],
+			};
+		} else if (matchCount === bestMatch.matchingResponses) {
+			bestMatch = {
+				...bestMatch,
+				mentors: [...bestMatch.mentors, mentor.name],
+			};
 		}
 	}
 
@@ -195,14 +203,16 @@ app.post('/summary', async (req, res) => {
 		const matches = [];
 
 		for (const currentMentor of mentors) {
-			const { mentor, matchingResponses } = await findBestMatchingMentor(
-				currentMentor.responses,
-				currentMentor.name
-			);
+			const { mentor, matchingResponses, mentors } =
+				await findBestMatchingMentor(
+					currentMentor.responses,
+					currentMentor.name
+				);
 			matches.push({
 				name: currentMentor.name,
 				match: mentor,
 				count: matchingResponses,
+				matches: mentors,
 			});
 		}
 		return res.status(200).json({ verified: true, matches });
