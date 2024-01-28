@@ -5,7 +5,9 @@ import '../styles/App.scss';
 import { questions } from '../constants/questions';
 import Landing from './screens/Landing';
 import Results from './screens/Results';
+import Summary from './screens/Summary';
 import { ToastContainer } from 'react-toastify';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
 	const [gameData, setGameData] = useState(null);
@@ -58,7 +60,12 @@ const AppWrapper = () => {
 				hideProgressBar={false}
 				theme='dark'
 			/>
-			<App />
+			<Router>
+				<Routes>
+					<Route path='/' element={<App />} />
+					<Route path='/summary' element={<Summary />} />
+				</Routes>
+			</Router>
 		</Container>
 	);
 };

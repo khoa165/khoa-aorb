@@ -47,7 +47,7 @@ const Results = ({ name, passcode, gameData }) => {
 	};
 
 	const getPercentScore = () => {
-		return parseFloat((score / 13) * 100).toFixed(2);
+		return parseFloat((score / 20) * 100).toFixed(2);
 	};
 
 	return (
