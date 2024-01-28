@@ -6,8 +6,6 @@ require('dotenv').config();
 const mapping = {
 	125: 'Anh Tran',
 	208: 'Thao Duong',
-	82: 'Thieu Nguyen',
-	83: 'Thien Nguyen',
 	168: 'Quy Nguyen',
 	194: 'An Ngo',
 	206: 'Tri Hoang',
