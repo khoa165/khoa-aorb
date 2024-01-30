@@ -14,7 +14,6 @@ const mapping = {
 	54: 'Minh Dinh',
 	62: 'Long Do',
 	69: 'Nguyen Tran',
-	76: 'Ha Nguyen',
 	80: 'Chau Ta',
 	81: 'Bach Nguyen',
 	85: 'Hoang Tran',
@@ -30,7 +29,6 @@ const mapping = {
 	142: 'Ha Nguyen',
 	154: 'Hung Ngo',
 	169: 'Khang Nguyen',
-	183: 'Chi',
 	190: 'Vy Tran',
 	196: 'Rachel Tran',
 };
