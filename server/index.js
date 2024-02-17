@@ -3,32 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-const mapping = {
-	125: 'Anh Tran',
-	208: 'Thao Duong',
-	168: 'Quy Nguyen',
-	194: 'An Ngo',
-	30: 'Khang Nguyen',
-	49: 'Thinh Tran',
-	54: 'Minh Dinh',
-	62: 'Long Do',
-	69: 'Nguyen Tran',
-	80: 'Chau Ta',
-	81: 'Bach Nguyen',
-	85: 'Hoang Tran',
-	88: 'Anh Hoang',
-	100: 'Linh Hoang',
-	102: 'Linh Nguyen',
-	112: 'Tu Pham',
-	121: 'Linh Tran',
-	129: 'Ha Nguyen',
-	137: 'Nhat Nguyen',
-	138: 'Duy Tran',
-	142: 'Ha Nguyen',
-	169: 'Khang Nguyen',
-	190: 'Vy Tran',
-	196: 'Rachel Tran',
-};
+const mapping = {};
 
 const app = express();
 
@@ -91,15 +66,17 @@ const verifyAccess = (name, passcode) => {
 	if (!eligible) {
 		return false;
 	}
-	if (parts[0] === 'season2mentors') {
-		return true;
-	}
-	try {
-		const aid = parseInt(parts[1], 10);
-		return mapping[aid] === name;
-	} catch (error) {
-		return false;
-	}
+	return true;
+	// if (parts[0] === 'season2mentors') {
+	// 	return true;
+	// }
+
+	// try {
+	// 	const aid = parseInt(parts[1], 10);
+	// 	return mapping[aid] === name;
+	// } catch (error) {
+	// 	return false;
+	// }
 };
 
 // Verify access
