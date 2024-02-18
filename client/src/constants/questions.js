@@ -61,8 +61,7 @@ export const questions = [
 		prompt: 'Are you...?',
 		a: 'Dog person',
 		b: 'Cat person',
-		c: 'Crazy person',
-		d: 'Alien',
+		c: 'Not an animal person',
 	},
 	{
 		qId: 8,
