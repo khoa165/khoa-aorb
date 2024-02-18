@@ -105,15 +105,14 @@ app.post('/submit', async (req, res) => {
 		});
 		await newUser.save();
 		if (!isMentor(passcode)) {
-			const { mentor, matchingResponses } = await findBestMatchingMentor(
-				responses,
-				null
-			);
+			const { mentor, matchingResponses, mentors } =
+				await findBestMatchingMentor(responses, null);
 			return res.status(200).json({
 				saved: true,
 				mentor: false,
 				match: mentor,
 				count: matchingResponses,
+				matches: mentors,
 			});
 		} else {
 			return res.status(200).json({ saved: true, mentor: true });

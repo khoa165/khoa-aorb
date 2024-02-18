@@ -6,6 +6,7 @@ const Results = ({ name, passcode, gameData }) => {
 	const [match, setMatch] = useState(null);
 	const [score, setScore] = useState(null);
 	const [done, setDone] = useState(false);
+	const [matches, setMatches] = useState(null);
 
 	const submit = async () => {
 		const config = {
@@ -30,6 +31,7 @@ const Results = ({ name, passcode, gameData }) => {
 				} else {
 					setMatch(res.data.match);
 					setScore(res.data.count);
+					setMatches(res.data.matches);
 				}
 			} else {
 				alert('Something went wrong');
@@ -63,11 +65,11 @@ const Results = ({ name, passcode, gameData }) => {
 					)}
 				</div>
 			)}
-			{match !== null && (
+			{matches !== null && (
 				<div className='results-wrapper'>
 					<h4 className='text-success mb-5'>
-						Your best mentor match is with {match} for a compatibility of{' '}
-						{getPercentScore()}%
+						Your best mentor(s) match are with {matches.join(', ')} for a
+						compatibility of {getPercentScore()}%
 					</h4>
 				</div>
 			)}
