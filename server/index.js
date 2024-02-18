@@ -57,16 +57,15 @@ const isMentor = (passcode) => {
 };
 
 const verifyAccess = (name, passcode) => {
-	const parts = passcode.split('-');
-	if (parts.length !== 2) {
-		return false;
-	}
-	const eligible =
-		parts[0] === 'vtmp2024applicant' || parts[0] === 'season2mentors';
-	if (!eligible) {
-		return false;
-	}
-	return true;
+	// const parts = passcode.split('-');
+	// if (parts.length !== 2) {
+	// 	return false;
+	// }
+	// const eligible =
+	// 	parts[0] === 'vtmp2024applicant' || parts[0] === 'season2mentors';
+	// if (!eligible) {
+	// 	return false;
+	// }
 	// if (parts[0] === 'season2mentors') {
 	// 	return true;
 	// }
@@ -77,6 +76,7 @@ const verifyAccess = (name, passcode) => {
 	// } catch (error) {
 	// 	return false;
 	// }
+	return passcode === 'vtmp2024applicant' || passcode === 'season2mentors-2024';
 };
 
 // Verify access
