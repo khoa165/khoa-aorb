@@ -163,7 +163,7 @@ app.post('/summary', async (req, res) => {
 		if (req.body.passcode !== 'secret matching') {
 			return res.status(400).json({ verified: false });
 		}
-		const mentors = await User.find({ role: 'mentor' });
+		const mentors = await User.find();
 		const matches = [];
 
 		for (const currentMentor of mentors) {
