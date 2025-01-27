@@ -80,18 +80,20 @@ const Summary = () => {
 				</ModalFooter>
 			</Modal>
 			{matches !== null && (
-				<Row className='mt-5'>
-					{matches.map((friendMatch) => (
-						<Col lg='4'>
-							<h3>{friendMatch.name}</h3>
-							<p>
-								Most compatible with {friendMatch.matches.join(", ")} with a
-								score of {parseFloat((friendMatch.count / 16) * 100).toFixed(2)}
-								%
-							</p>
-						</Col>
-					))}
-				</Row>
+				<div id='summary-screen'>
+					<Row className='mt-5'>
+						{matches.map((friendMatch) => (
+							<Col lg='4'>
+								<h3>{friendMatch.name}</h3>
+								<p>
+									Most compatible with {friendMatch.matches.join(", ")} with a
+									score of{" "}
+									{parseFloat((friendMatch.count / 16) * 100).toFixed(2)}%
+								</p>
+							</Col>
+						))}
+					</Row>
+				</div>
 			)}
 		</>
 	);
