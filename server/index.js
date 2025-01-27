@@ -148,7 +148,7 @@ async function findBestMatchingMentor(participantResponses, exclude) {
 
 app.post("/summary", async (req, res) => {
 	try {
-		if (req.body.passcode !== "secret matching") {
+		if (req.body.passcode.toLowerCase() !== "vtmp") {
 			return res.status(400).json({ verified: false });
 		}
 		const mentors = await User.find();
