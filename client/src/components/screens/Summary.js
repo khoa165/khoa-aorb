@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
 	Button,
 	Input,
@@ -8,20 +8,20 @@ import {
 	ModalFooter,
 	Row,
 	Col,
-} from 'reactstrap';
-import axios from 'axios';
+} from "reactstrap";
+import axios from "axios";
 
 const Summary = () => {
 	const [modal, setModal] = useState(false);
 	const toggle = () => setModal(!modal);
-	const [summaryPassword, setSummaryPassword] = useState('');
+	const [summaryPassword, setSummaryPassword] = useState("");
 	const onChangeSummaryPassword = (e) => setSummaryPassword(e.target.value);
 	const [matches, setMatches] = useState(null);
 
 	const verify = async () => {
 		const config = {
 			headers: {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
 			},
 		};
 		const body = JSON.stringify({
@@ -30,9 +30,9 @@ const Summary = () => {
 		let res = null;
 		const url =
 			process.env.REACT_APP_BACKEND_URL ||
-			'https://mentorship-game.onrender.com';
+			"https://mentorship-game.onrender.com";
 		try {
-			res = await axios.post(url + '/summary', body, config);
+			res = await axios.post(url + "/summary", body, config);
 			if (res.data.verified) {
 				setMatches(res.data.matches);
 				setModal(false);
@@ -73,7 +73,7 @@ const Summary = () => {
 				<ModalFooter>
 					<Button color='primary' onClick={verify}>
 						View summary
-					</Button>{' '}
+					</Button>{" "}
 					<Button color='secondary' onClick={toggle}>
 						Cancel
 					</Button>
@@ -85,8 +85,8 @@ const Summary = () => {
 						<Col lg='4'>
 							<h3>{friendMatch.name}</h3>
 							<p>
-								Most compatible with {friendMatch.matches.join(', ')} with a
-								score of {parseFloat((friendMatch.count / 20) * 100).toFixed(0)}
+								Most compatible with {friendMatch.matches.join(", ")} with a
+								score of {parseFloat((friendMatch.count / 16) * 100).toFixed(2)}
 								%
 							</p>
 						</Col>
