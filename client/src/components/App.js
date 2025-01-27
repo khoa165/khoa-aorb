@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Container } from 'reactstrap';
-import Game from './game/Game';
-import '../styles/App.scss';
-import { questions } from '../constants/questions';
-import Landing from './screens/Landing';
-import Results from './screens/Results';
-import Summary from './screens/Summary';
-import { ToastContainer } from 'react-toastify';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState } from "react";
+import { Container } from "reactstrap";
+import Game from "./game/Game";
+import { questions } from "../constants/questions";
+import Landing from "./screens/Landing";
+import Results from "./screens/Results";
+import Summary from "./screens/Summary";
+import { ToastContainer } from "react-toastify";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
 	const [gameData, setGameData] = useState(null);
 	const [gameStarted, setGameStarted] = useState(false);
 	const [name, setName] = useState(false);
+	const [menteeId, setMenteeId] = useState(false);
 	const [passcode, setPasscode] = useState(false);
 	const [isMentor, setIsMentor] = useState(false);
 	const startNextAction = () => setGameStarted(true);
@@ -22,6 +22,7 @@ const App = () => {
 			<Results
 				gameData={gameData}
 				name={name}
+				menteeId={menteeId}
 				passcode={passcode}
 				questions={questions}
 			/>
@@ -42,6 +43,7 @@ const App = () => {
 		<Landing
 			startNextAction={startNextAction}
 			setName={setName}
+			setMenteeId={setMenteeId}
 			setPasscode={setPasscode}
 			setIsMentor={setIsMentor}
 		/>
@@ -50,10 +52,9 @@ const App = () => {
 
 const AppWrapper = () => {
 	return (
-		<Container>
+		<Container className='m-0 p-0'>
 			<ToastContainer
 				position='top-right'
-				autoClose='19900'
 				draggable={false}
 				pauseOnHover={false}
 				pauseOnFocusLoss={false}

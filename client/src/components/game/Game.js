@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Card from './Card';
+import React, { useState, useEffect } from "react";
+import Card from "./Card";
 
 const Game = ({ setGameData, questions, isMentor }) => {
 	const [q, setQuestion] = useState(0);
@@ -9,8 +9,7 @@ const Game = ({ setGameData, questions, isMentor }) => {
 		if (q < questions.length) {
 			return;
 		}
-		console.log('answers', answers);
-		setGameData(answers.filter((a) => a.qid !== null && a.qid !== undefined));
+		setGameData(answers.filter((a) => a.qid != null));
 	}, [q]);
 	return (
 		<div>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import {
 	Button,
 	Input,
@@ -7,24 +7,27 @@ import {
 	ModalHeader,
 	ModalBody,
 	ModalFooter,
-} from 'reactstrap';
+} from "reactstrap";
 
 const Auth = ({
 	startNextAction,
 	modal,
 	toggle,
 	setName,
+	setMenteeId,
 	setPasscode,
 	setIsMentor,
 }) => {
-	const [enteredPasscode, setEnteredPasscode] = useState('');
-	const [enteredName, setEnteredName] = useState('');
+	const [enteredPasscode, setEnteredPasscode] = useState("");
+	const [enteredName, setEnteredName] = useState("");
+	const [enteredId, setEnteredId] = useState("");
 	const onChangeName = (e) => setEnteredName(e.target.value);
+	const onChangeMenteeId = (e) => setEnteredId(e.target.value);
 	const onChangePasscode = (e) => setEnteredPasscode(e.target.value);
 	const verify = async () => {
 		const config = {
 			headers: {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
 			},
 		};
 		const body = JSON.stringify({
@@ -34,11 +37,12 @@ const Auth = ({
 		let res = null;
 		const url =
 			process.env.REACT_APP_BACKEND_URL ||
-			'https://mentorship-game.onrender.com';
+			"https://mentorship-game.onrender.com";
 		try {
-			res = await axios.post(url + '/verify', body, config);
+			res = await axios.post(url + "/verify", body, config);
 			if (res.data.verified) {
 				setName(enteredName);
+				setMenteeId(enteredId);
 				setPasscode(enteredPasscode);
 				setIsMentor(res.data.mentor);
 				startNextAction();
@@ -62,12 +66,17 @@ const Auth = ({
 			</ModalHeader>
 			<ModalBody>
 				<Input type='text' onChange={onChangeName} placeholder='First Last' />
+				<Input
+					type='text'
+					onChange={onChangeMenteeId}
+					placeholder='ID (mentee only)'
+				/>
 				<Input type='text' onChange={onChangePasscode} placeholder='Passcode' />
 			</ModalBody>
 			<ModalFooter>
 				<Button color='primary' onClick={verify}>
 					Let's play!
-				</Button>{' '}
+				</Button>{" "}
 				<Button color='secondary' onClick={toggle}>
 					Cancel
 				</Button>

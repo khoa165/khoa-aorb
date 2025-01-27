@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Rule = () => {
 	return (
@@ -6,11 +6,15 @@ const Rule = () => {
 			<h1 className='text-success'>Instructions</h1>
 			<div className='rule'>
 				<p>
-					There are 20 questions in total and you have{' '}
-					<span className='fw-bold fst-italic text-warning'>20 seconds</span>{' '}
-					for each question (pay attention to the timer, don't let it run out)
+					There are 20 questions in total and you have{" "}
+					<span className='fw-bold fst-italic text-success'>10-30 seconds</span>{" "}
+					for each question (pay attention to the timer at the bottom right,
+					don't let it run out)
 				</p>
-				<p>Don't over think, just pick what you feel the most</p>
+				<p>
+					Don't over think, just pick what you feel the most! It's supposed to
+					be fun
+				</p>
 				<p>
 					Do not miss a question, always pick something before time runs out!
 				</p>

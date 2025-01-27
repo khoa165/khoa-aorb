@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Button } from 'reactstrap';
+import React, { useState } from "react";
+import axios from "axios";
+import { Button } from "reactstrap";
 
-const Results = ({ name, passcode, gameData }) => {
+const Results = ({ name, menteeId, passcode, gameData }) => {
 	const [match, setMatch] = useState(null);
 	const [score, setScore] = useState(null);
 	const [done, setDone] = useState(false);
@@ -11,30 +11,31 @@ const Results = ({ name, passcode, gameData }) => {
 	const submit = async () => {
 		const config = {
 			headers: {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
 			},
 		};
 		const body = JSON.stringify({
 			name,
+			menteeId,
 			passcode,
 			responses: gameData,
 		});
 		let res = null;
 		const url =
 			process.env.REACT_APP_BACKEND_URL ||
-			'https://mentorship-game.onrender.com';
+			"https://mentorship-game.onrender.com";
 		try {
-			res = await axios.post(url + '/submit', body, config);
+			res = await axios.post(url + "/submit", body, config);
 			if (res.data.saved) {
 				if (res.data.mentor) {
-					alert('You are a mentor, no match for you!');
+					alert("You are a mentor, no match for you!");
 				} else {
 					setMatch(res.data.match);
 					setScore(res.data.count);
 					setMatches(res.data.matches);
 				}
 			} else {
-				alert('Something went wrong');
+				alert("Something went wrong");
 			}
 		} catch (error) {
 			console.log(error?.response?.data?.saved);
@@ -49,7 +50,7 @@ const Results = ({ name, passcode, gameData }) => {
 	};
 
 	const getPercentScore = () => {
-		return parseFloat((score / 20) * 100).toFixed(2);
+		return parseFloat((score / 16) * 100).toFixed(2);
 	};
 
 	return (
@@ -68,7 +69,7 @@ const Results = ({ name, passcode, gameData }) => {
 			{matches !== null && (
 				<div className='results-wrapper'>
 					<h4 className='text-success mb-5'>
-						Your best mentor(s) match are with {matches.join(', ')} for a
+						Your best mentor(s) match are with {matches.join(", ")} for a
 						compatibility of {getPercentScore()}%
 					</h4>
 				</div>

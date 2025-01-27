@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import Auth from '../auth/Auth';
-import Rule from '../game/Rule';
-import { Button } from 'reactstrap';
+import React, { useState } from "react";
+import Auth from "../auth/Auth";
+import Rule from "../game/Rule";
+import { Button } from "reactstrap";
 
-const Landing = ({ startNextAction, setName, setPasscode, setIsMentor }) => {
+const Landing = ({
+	startNextAction,
+	setName,
+	setMenteeId,
+	setPasscode,
+	setIsMentor,
+}) => {
 	const [modal, setModal] = useState(false);
 	const toggle = () => setModal(!modal);
 	return (
@@ -17,6 +23,7 @@ const Landing = ({ startNextAction, setName, setPasscode, setIsMentor }) => {
 				toggle={toggle}
 				startNextAction={startNextAction}
 				setName={setName}
+				setMenteeId={setMenteeId}
 				setPasscode={setPasscode}
 				setIsMentor={setIsMentor}
 			/>

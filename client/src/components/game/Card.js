@@ -1,22 +1,40 @@
-import React, { useEffect, useRef } from 'react';
-import { Button, Col, Row } from 'reactstrap';
-import { toast } from 'react-toastify';
+import React, { useEffect, useRef } from "react";
+import { Button, Col, Row } from "reactstrap";
+import { toast } from "react-toastify";
 
-const Card = ({ currentQ, questions, setQuestion, answers, setAnswers }) => {
+const Card = ({
+	currentQ,
+	questions,
+	setQuestion,
+	answers,
+	setAnswers,
+	isMentor,
+}) => {
 	const toastId = useRef(null);
-	const { qId, prompt, linear, menteeOnly, timer, ...options } =
-		questions[currentQ];
+	const { qId, prompt, menteeOnly, timer, ...options } = questions[currentQ];
 
 	useEffect(() => {
+		if (menteeOnly && isMentor) {
+			setQuestion(currentQ + 1);
+			return;
+		}
 		if (currentQ >= 0 && currentQ < questions.length) {
-			toastId.current = toast.error(`Time running for question ${currentQ}...`);
-			const jsTimer = setTimeout(() => {
-				updateAnswers('');
-				goToNextQuestion();
-			}, 20000);
+			toastId.current = toast.error(
+				`Time running for question ${currentQ}...`,
+				{
+					autoClose: timer ? timer * 1000 : 10000,
+				}
+			);
+			const jsTimer = setTimeout(
+				() => {
+					updateAnswers("");
+					goToNextQuestion();
+				},
+				timer ? timer * 1000 : 10000
+			);
 			return () => clearTimeout(jsTimer);
 		}
-	}, [currentQ]);
+	}, [currentQ, isMentor]);
 
 	if (currentQ < 0) {
 		return null;
@@ -28,6 +46,7 @@ const Card = ({ currentQ, questions, setQuestion, answers, setAnswers }) => {
 			{
 				qid: qId,
 				choice,
+				menteeOnly,
 			},
 		]);
 	};
@@ -44,9 +63,9 @@ const Card = ({ currentQ, questions, setQuestion, answers, setAnswers }) => {
 
 	return (
 		<div className='game-card'>
-			<h1 className='text-success'>{prompt}</h1>
-			<Row>
-				{['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'].map((c) => {
+			<h1 className='text-success mb-5'>{prompt}</h1>
+			<Row className='g-4 options-row'>
+				{["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"].map((c) => {
 					if (options[c] !== undefined) {
 						return (
 							<Col lg='4'>

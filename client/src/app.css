@@ -1,0 +1,40 @@
+#landing-screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	background-color: #bcbcbc;
+}
+
+.game-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	min-height: 100vh;
+	width: 100vw;
+	padding-top: 10vh;
+	background-color: #bcbcbc;
+}
+
+.options-row {
+	width: 100%;
+}
+
+.ab-button {
+	display: block;
+	width: 100%;
+	height: 200px;
+}
+
+#results-screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	background-color: #bcbcbc;
+}
